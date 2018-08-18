@@ -17,4 +17,8 @@
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="loginForm.form.invalid">Login</button>
   </form>
+
+  <div class="alert alert-danger" *ngIf="loginFailed">
+    {{errMessage}}
+  </div>
 </div>
