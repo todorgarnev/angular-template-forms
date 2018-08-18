@@ -19,25 +19,16 @@ export class AuthService {
 
   login(model: LoginModel) {
     return this.http.post(loginUrl,
-      JSON.stringify(model),
-      {
-        headers: this.createAuthHeaders('Basic')
-      });
+      JSON.stringify(model));
   }
 
   register(model: RegisterModel) {
     return this.http.post(registerUrl,
-      JSON.stringify(model),
-      {
-        headers: this.createAuthHeaders('Basic')
-      });
+      JSON.stringify(model));
   }
 
   logout() {
-    return this.http.post(logoutUrl, {},
-      {
-        headers: this.createAuthHeaders('Kinvey')
-      });
+    return this.http.post(logoutUrl, {});
   }
 
   getAuthtoken() {
@@ -52,18 +43,19 @@ export class AuthService {
     return this.currentAuthtoken === localStorage.getItem('authtoken');
   }
 
-  private createAuthHeaders(type: string) {
-    if (type === 'Basic') {
-      return new HttpHeaders({
-        'Authorization': `Basic ${btoa(`${appKey}:${appSecret}`)}`,
-        'Content-type': 'application/json'
-      });
-    } else {
-      return new HttpHeaders({
-        'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
-        'Content-type': 'application/json'
-      });
-    }
-  }
+  // USE INTERCEPTOR INSTEAD OF THIS
+  // private createAuthHeaders(type: string) {
+  //   if (type === 'Basic') {
+  //     return new HttpHeaders({
+  //       'Authorization': `Basic ${btoa(`${appKey}:${appSecret}`)}`,
+  //       'Content-type': 'application/json'
+  //     });
+  //   } else {
+  //     return new HttpHeaders({
+  //       'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
+  //       'Content-type': 'application/json'
+  //     });
+  //   }
+  // }
 
 }
