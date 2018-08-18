@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    delete this.model['confirmPassword'];
     console.log('regiter..');
   }
 
