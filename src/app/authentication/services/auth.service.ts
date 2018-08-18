@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   checkIfLogged() {
-    return this.currentAuthtoken === localStorage.getItem('authtoken');
+    return localStorage.getItem('authtoken') !== null;
   }
 
   // USE INTERCEPTOR INSTEAD OF THIS
