@@ -16,7 +16,7 @@ export class NavigationComponent implements OnInit {
     this.authService.logout()
       .subscribe(data => {
         localStorage.clear();
-        this.authService.setAuthtoken(null);
+        this.authService.setAuthtoken('');
         this.router.navigate(['/login']);
       });
   }
